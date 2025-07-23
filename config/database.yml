@@ -22,29 +22,29 @@ default: &default
 development:
   primary: &primary_development
     <<: *default
-    database: coachy_development
+    database: base_rails_app_development
     host: localhost
     port: 5432
     username: postgres
     password: postgres
   queue:
     <<: *primary_development
-    database: coachy_development_queue
+    database: base_rails_app_development_queue
     migrations_paths: db/queue_migrate
   cache:
     <<: *primary_development
-    database: coachy_development_cache
+    database: base_rails_app_development_cache
     migrations_paths: db/cache_migrate
   cable:
     <<: *primary_development
-    database: coachy_development_cable
+    database: base_rails_app_development_cable
     migrations_paths: db/cable_migrate
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
   # When left blank, PostgreSQL will use the default role. This is
   # the same name as the operating system user running Rails.
-  #username: coachy
+  #username: base_rails_app
 
   # The password associated with the PostgreSQL role (username).
   #password:
@@ -72,7 +72,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: coachy_test
+  database: base_rails_app_test
   host: localhost
   port: 5432
   username: postgres
@@ -101,18 +101,18 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: coachy_production
-    username: coachy
-    password: <%= ENV["COACHY_DATABASE_PASSWORD"] %>
+    database: base_rails_app_production
+    username: base_rails_app
+    password: <%= ENV["BASE_RAILS_APP_DATABASE_PASSWORD"] %>
   cache:
     <<: *primary_production
-    database: coachy_production_cache
+    database: base_rails_app_production_cache
     migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
-    database: coachy_production_queue
+    database: base_rails_app_production_queue
     migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
-    database: coachy_production_cable
+    database: base_rails_app_production_cable
     migrations_paths: db/cable_migrate
