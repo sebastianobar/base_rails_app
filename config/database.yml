@@ -23,7 +23,7 @@ development:
   primary: &primary_development
     <<: *default
     database: base_rails_app_development
-    host: localhost
+    host: <%= ENV.fetch("DB_HOST") { localhost } %>
     port: 5432
     username: postgres
     password: postgres
@@ -73,7 +73,7 @@ development:
 test:
   <<: *default
   database: base_rails_app_test
-  host: localhost
+  host:  <%= ENV.fetch("DB_HOST") { localhost } %>
   port: 5432
   username: postgres
   password: postgres
