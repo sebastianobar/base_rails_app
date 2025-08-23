@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
 
   postgres:
-    image: postgres:16.1
+    image: postgres:17
     restart: unless-stopped
     networks:
     - default
@@ -37,6 +37,11 @@ services:
     environment:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
+
+  mailcatcher:
+    image: dockage/mailcatcher
+
+    network_mode: service:postgres
 
 volumes:
   postgres-data:
