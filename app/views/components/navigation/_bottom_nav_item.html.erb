@@ -1,0 +1,5 @@
+<button data-controller="navigation" data-navigation-link-value="<%= link %>" data-action="click->navigation#navigate" class="<%= "dock-active" if active.presence %>">
+  <%= yield %>
+  <span class="dock-label"><%= label %></span>
+</button>
+

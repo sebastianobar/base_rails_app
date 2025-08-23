@@ -1,0 +1,14 @@
+<% if resource&.errors&.any? %>
+  <div class="alert alert-error mb-4">
+    <div>
+      <span>
+        <strong><%= pluralize(resource.errors.count, "error") %> prohibited this form from being saved:</strong>
+        <ul class="mt-2 list-disc list-inside">
+          <% resource.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </span>
+    </div>
+  </div>
+<% end %>

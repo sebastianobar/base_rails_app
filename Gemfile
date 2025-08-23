@@ -67,3 +67,7 @@ group :test do
 end
 
 gem "rename", "~> 1.1"
+
+gem "devise", "~> 4.9"
+
+gem "rolify", "~> 6.0"

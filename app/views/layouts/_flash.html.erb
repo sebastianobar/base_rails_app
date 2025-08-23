@@ -1,0 +1,13 @@
+<% flash.each do |type, message| %>
+  <% alert_class = case type.to_s
+                  when 'notice', 'success' then 'alert-success'
+                  when 'alert', 'error'     then 'alert-error'
+                  when 'warning'            then 'alert-warning'
+                  else 'alert-info'
+                  end %>
+  <div role="alert"
+       class="alert <%= alert_class %> alert-soft shadow-lg mb-4 transition-opacity duration-500 opacity-100"
+       data-flash-target="message">
+    <span><%= message %></span>
+  </div>
+<% end %>

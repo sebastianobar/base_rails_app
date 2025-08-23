@@ -1,0 +1,35 @@
+<% content_for :title, "Reset your password" %>
+
+<div class="hero lg:min-h-screen bg-base-200">
+  <div class="hero-content flex-col lg:flex-row-reverse gap-8">
+    <div class="text-center lg:text-left">
+      <h1 class="text-3xl md:text-4xl font-bold">Reset your password</h1>
+      <p class="py-2 text-base-content/70">Enter your email and we'll send instructions to reset your password.</p>
+    </div>
+
+    <div class="card w-full max-w-md shadow-lg bg-base-100">
+      <div class="card-body p-8">
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+
+          <div class="form-control mb-6">
+            <%= f.label :email, class: "input w-full" do %>
+              <span class="label">Email</span>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
+            <% end %>
+          </div>
+
+          <div class="form-control">
+            <%= f.submit "Send reset instructions", class: "btn btn-primary w-full" %>
+          </div>
+        <% end %>
+
+        <div class="divider my-6">OR</div>
+
+        <div class="text-center">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
