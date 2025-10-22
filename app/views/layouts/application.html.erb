@@ -19,15 +19,17 @@
   </head>
     <body class="bg-base-200 min-h-screen flex flex-col">
     <!-- Navigation -->
-    <%= render 'components/navigation/desktop_navbar' %>
+    <%= render 'components/navigation/navbar' %>
 
     <div class="drawer drawer-end">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content">
         <main class="flex-1 pb-16 md:pb-0">
           <!-- Flash Messages (below navbar) -->
-          <div id="flash" class="fixed top-20 left-4 right-4 z-50" data-controller="flash">
-            <%= render "layouts/flash" %>
+          <div id="flash" class="fixed top-2 left-0 right-0 z-50 flex justify-center mx-20" data-controller="flash">
+            <div class="w-full max-w-3xl">
+              <%= render "layouts/flash" %>
+            </div>
           </div>
 
           <div class="container mx-auto px-4 py-6">
@@ -35,9 +37,13 @@
           </div>
         </main>
         <!-- Mobile Bottom Navigation -->
-        <%= render 'components/navigation/mobile_bottom_nav' %>
+        <% if user_signed_in? %>
+          <%= render 'components/navigation/mobile_bottom_nav' %>
+        <% end %>
       </div>
-      <%= render 'components/navigation/sidebar_overlay' %>
+      <% if user_signed_in? %>
+        <%= render 'components/navigation/sidebar_overlay' %>
+      <% end %>
     </div>
   </body>
 </html>

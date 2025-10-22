@@ -1,0 +1,10 @@
+it:
+  activerecord:
+    models:
+      users/profile: Profilo
+    attributes:
+      users/profile:
+        first_name: "Nome"
+        last_name: "Cognome"
+        birthdate: "Data di nascita"
+        lang: "Lingua"

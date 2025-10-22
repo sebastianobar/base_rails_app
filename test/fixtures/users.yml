@@ -4,6 +4,15 @@
 # model remove the "{}" from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
+# Minimal user fixture for tests
+one:
+  id: 1
+  email: user@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.now.utc %>
+
+without_profile:
+  id: 2
+  email: user2@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.now.utc %>

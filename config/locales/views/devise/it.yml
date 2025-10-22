@@ -1,0 +1,26 @@
+---
+it:
+  devise:
+    sessions:
+      new:
+        welcome_back: Bentornato — per favore accedi al tuo account.
+        remember_me: Ricordami
+    confirmations:
+      new:
+        subtitle: Inserisci la tua email per ricevere nuovamente le istruzioni di conferma.
+    registrations:
+      confirm_email_info:
+        resend_confirmation: Rinvia email di conferma
+        return_home: Torna alla home
+      edit:
+        subtitle: Cambia la tua email o password qui sotto.
+    passwords:
+      new:
+        subtitle: Inserisci la tua email e ti invieremo le istruzioni per reimpostare la tua password.
+      edit:
+        subtitle: Inserisci una nuova password per il tuo account.
+    shared:
+      minimum_password_length:
+        one: "(minimo %{count} carattere)"
+        other: "(minimo %{count} caratteri)"
+      complete_profile_alert: Per favore completa il tuo profilo prima di procedere.

@@ -1,10 +1,10 @@
-<% content_for :title, "Sign In" %>
+<% content_for :title, t('.sign_in') %>
 
 <div class="hero lg:min-h-screen bg-base-200">
   <div class="hero-content flex-col lg:flex-row-reverse gap-8">
     <div class="text-center lg:text-left">
-      <h1 class="text-4xl md:text-5xl font-extrabold">Login</h1>
-      <p class="py-2 text-base-content/70">Welcome back — please sign in to your account.</p>
+      <h1 class="text-4xl md:text-5xl font-extrabold"><%= t('.sign_in') %></h1>
+      <p class="py-2 text-base-content/70"><%= t('.welcome_back') %></p>
     </div>
 
     <div class="card w-full max-w-md shadow-lg bg-base-100">
@@ -14,14 +14,14 @@
 
           <div class="form-control mb-4">
             <%= f.label :email, class: "input w-full" do %>
-              <span class="label">Email</span>
+              <span class="label"><%= resource.class.human_attribute_name(:email) %></span>
               <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
             <% end %>
           </div>
 
           <div class="form-control mb-4">
             <%= f.label :password, class: "input w-full" do %>
-              <span class="label">Password</span>
+              <span class="label"><%= resource.class.human_attribute_name(:password) %></span>
               <%= f.password_field :password, autocomplete: "current-password", required: true %>
             <% end %>
           </div>
@@ -29,13 +29,12 @@
           <div class="flex items-center justify-between mb-6">
             <label class="flex items-center gap-2">
               <%= f.check_box :remember_me, class: "checkbox" %>
-              <span class="text-sm">Remember me</span>
+              <span class="text-sm"><%= t('.remember_me')%></span>
             </label>
-            <%= link_to "Forgot password?", new_password_path(resource_name), class: "link link-hover text-sm" %>
           </div>
 
           <div class="form-control">
-            <%= f.submit "Login", class: "btn btn-primary w-full" %>
+            <%= f.submit t('.sign_in'), class: "btn btn-primary w-full" %>
           </div>
         <% end %>
 

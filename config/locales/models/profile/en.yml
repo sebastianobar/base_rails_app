@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    attributes:
+      users/profile:
+        first_name: "First Name"
+        last_name: "Last Name"
+        birthdate: "Birthdate"
+        lang: "Language"

@@ -1,0 +1,11 @@
+---
+it:
+  components:
+    navigation:
+      sidebar_overlay:
+        profile: Profilo
+        account: Account
+        dark_mode: Dark Mode
+        logout: Logout
+      navbar:
+        dark_mode: Dark Mode

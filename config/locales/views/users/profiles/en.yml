@@ -1,0 +1,16 @@
+---
+en:
+  users:
+    profiles:
+      form:
+        prohibited_from_being_saved:
+          one: '1 error prohibited this profile from being saved:'
+          other: '%{count} errors prohibited this profile from being saved:'
+        avatar_edit: Edit
+        remove_avatar: Remove Avatar
+        avatar_confirm: Are you sure?
+        avatar: Avatar
+      new:
+        create_profile: Create Profile
+      edit:
+        editing_profile: Editing Profile

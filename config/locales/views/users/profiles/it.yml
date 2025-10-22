@@ -1,0 +1,16 @@
+---
+it:
+  users:
+    profiles:
+      form:
+        prohibited_from_being_saved:
+          one: '1 errore ha impedito il salvataggio di questo profilo:'
+          other: '%{count} errori hanno impedito il salvataggio di questo profilo:'
+        avatar_edit: Modifica
+        remove_avatar: Rimuovi avatar
+        avatar_confirm: Sei sicuro?
+        avatar: Avatar
+      new:
+        create_profile: Crea profilo
+      edit:
+        editing_profile: Modifica profilo

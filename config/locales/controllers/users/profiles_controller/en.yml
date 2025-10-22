@@ -1,0 +1,11 @@
+---
+en:
+  controllers:
+    users:
+      profiles_controller:
+        create:
+          success: "Profile was successfully created."
+        update:
+          success: "Profile was successfully updated."
+        destroy_avatar:
+          success: "Avatar was successfully removed."

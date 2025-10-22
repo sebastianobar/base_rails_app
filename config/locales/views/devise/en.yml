@@ -1,0 +1,23 @@
+---
+en:
+  devise:
+    sessions:
+      new:
+        welcome_back: Welcome back — please sign in to your account.
+        remember_me: Remember me
+    confirmations:
+      new:
+        subtitle: Enter your email to get confirmation instructions again.
+    registrations:
+      confirm_email_info:
+        resend_confirmation: Resend confirmation email
+        return_home: Return to home
+      edit:
+        subtitle: Change your email or password below.
+    passwords:
+      new:
+        subtitle: Enter your email and we'll send instructions to reset your password.
+      edit:
+        subtitle: Enter a new password for your account.
+    shared:
+      complete_profile_alert: Please complete your profile before proceeding.

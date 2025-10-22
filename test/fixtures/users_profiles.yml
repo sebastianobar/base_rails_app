@@ -1,0 +1,10 @@
+one:
+  first_name: MyString
+  last_name: MyString
+  birthdate: 2025-08-30
+  lang: en
+  user_id: 1
+  created_at: <%= Time.now.utc %>
+  updated_at: <%= Time.now.utc %>
+
+

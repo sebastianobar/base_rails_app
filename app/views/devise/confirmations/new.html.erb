@@ -1,10 +1,10 @@
-<% content_for :title, "Resend confirmation" %>
+<% content_for :title, t('.resend_confirmation_instructions') %>
 
 <div class="hero lg:min-h-screen bg-base-200">
   <div class="hero-content flex-col lg:flex-row-reverse gap-8">
     <div class="text-center lg:text-left">
-      <h1 class="text-3xl md:text-4xl font-bold">Resend confirmation instructions</h1>
-      <p class="py-2 text-base-content/70">Enter your email to get confirmation instructions again.</p>
+      <h1 class="text-3xl md:text-4xl font-bold"><%= t('.resend_confirmation_instructions') %></h1>
+      <p class="py-2 text-base-content/70"><%= t('.subtitle') %></p>
     </div>
 
     <div class="card w-full max-w-md shadow-lg bg-base-100">
@@ -14,13 +14,13 @@
 
           <div class="form-control mb-6">
             <%= f.label :email, class: "input w-full" do %>
-              <span class="label">Email</span>
+              <span class="label"><%= resource.class.human_attribute_name(:email) %></span>
               <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
             <% end %>
           </div>
 
           <div class="form-control">
-            <%= f.submit "Resend confirmation", class: "btn btn-primary w-full" %>
+            <%= f.submit t('.resend_confirmation_instructions'), class: "btn btn-primary w-full" %>
           </div>
         <% end %>
 

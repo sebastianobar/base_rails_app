@@ -1,7 +1,14 @@
 require "test_helper"
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
+  include Devise::Test::IntegrationHelpers
+
   if ENV["CAPYBARA_SERVER_PORT"]
+    setup do
+      Capybara.server_host = "0.0.0.0" # bind to all interfaces
+      Capybara.app_host = "http://#{IPSocket.getaddress(Socket.gethostname)}"
+    end
+
     served_by host: "rails-app", port: ENV["CAPYBARA_SERVER_PORT"]
 
     driven_by :selenium, using: :headless_chrome, screen_size: [ 1400, 1400 ], options: {

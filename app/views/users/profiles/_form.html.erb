@@ -1,0 +1,96 @@
+<%= form_with(model: users_profile, class: "contents") do |form| %>
+  <% if users_profile.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= t('.prohibited_from_being_saved', count: users_profile.errors.count) %></h2>
+
+      <ul class="list-disc ml-6">
+        <% users_profile.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <!-- Avatar selector: replaced with daisyUI avatar preview + hidden file input (minimal changes) -->
+  <div class="form-control mb-4" data-controller="avatar">
+    <div class="flex justify-center space-x-4">
+      <!-- Clickable avatar circle (daisyUI / tailwind classes) -->
+      <label for="<%= form.object_name %>_avatar" class="avatar cursor-pointer group">
+        <div class="w-30 h-30 rounded-full overflow-hidden bg-gray-100 border <%=
+             users_profile.errors[:avatar].any? ? 'border-red-400' : 'border-gray-300'
+           %> relative">
+          <% if display_avatar?(users_profile) %>
+            <%= image_tag users_profile.avatar.representation(:normalized), id: "avatar_preview", class:"object-cover w-full h-full", data: { "avatar-target": "preview" } %>
+          <% else %>
+            <img id="avatar_preview" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 30 30' fill='none' stroke='%23A0AEC0' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='8' r='3'/><path d='M21 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2'/></svg>" alt="Avatar placeholder" class="hidden object-cover w-full h-full" data-avatar-target="preview">
+
+            <div id="avatar_placeholder" class="avatar avatar-placeholder" data-avatar-target="placeholder">
+              <div class="bg-secondary text-secondary-content text-4xl object-cover w-30">
+                <span><%=profile_name_initials(users_profile.user)%></span>
+              </div>
+            </div>
+            <!-- simple placeholder (keeps minimal changes) -->
+          <% end %>
+          <!-- Overlay: semi-transparent bottom band with "Edit" text -->
+          <div class="absolute bottom-0 left-0 right-0 bg-black opacity-50 text-white text-xs text-center py-1 flex items-center justify-center">
+            <%= t('.avatar_edit') %>
+          </div>
+          <div class="absolute bottom-0 left-0 right-0 text-white text-xs text-center py-1 flex items-center justify-center">
+            <%= t('.avatar_edit') %>
+          </div>
+        </div>
+      </label>
+
+      <div>
+        <%= form.file_field :avatar,
+              id: "#{form.object_name}_avatar",
+              class: "hidden",
+              accept: "image/*",
+              data: { action: "change->avatar#preview", "avatar-target": "input" } %>
+
+
+        <% if users_profile.errors[:avatar].any? %>
+          <p class="text-red-500 text-sm mt-1"><%= users_profile.errors[:avatar].first %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <% if users_profile.avatar.attached? %>
+    <div>
+      <%= link_to t('.remove_avatar'), destroy_avatar_users_profile_path(users_profile), method: :delete, data: { turbo_confirm: t('.avatar_confirm'), turbo_method: :delete }, class: "btn btn-outline btn-error w-full" %>
+    </div>
+  <% end %>
+
+  <div class="form-control mb-4 mt-4">
+    <%= form.label :first_name, class: "floating-label" do %>
+      <%= form.text_field :first_name, placeholder: users_profile.class.human_attribute_name(:first_name), class: ["input input-md w-full", {"input-error": users_profile.errors[:first_name].any?}] %>
+      <span><%= users_profile.class.human_attribute_name(:first_name) %></span>
+    <% end %>
+  </div>
+
+  <div class="form-control mb-4">
+    <%= form.label :last_name, class: "floating-label" do %>
+      <%= form.text_field :last_name, placeholder: users_profile.class.human_attribute_name(:last_name), class: ["input input-md w-full", {"input-error": users_profile.errors[:last_name].any?}] %>
+      <span><%= users_profile.class.human_attribute_name(:last_name) %></span>
+    <% end %>
+  </div>
+
+  <div class="form-control mb-4">
+    <%= form.label :birthdate, class: "floating-label" do %>
+      <%= form.date_field :birthdate, placeholder: users_profile.class.human_attribute_name(:birthdate), class: ["input input-md w-full", {"input-error": users_profile.errors[:birthdate].any?}] %>
+      <span><%= users_profile.class.human_attribute_name(:birthdate) %></span>
+    <% end %>
+  </div>
+
+  <div class="form-control mb-4">
+    <%= form.label :lang, class: "floating-label" do%>
+      <%= form.select :lang, profile_language_selector, {}, class: ["select w-full", {"select-error": users_profile.errors[:lang].any?}] %>
+      <span><%= users_profile.class.human_attribute_name(:lang) %></span>
+    <% end %>
+  </div>
+  <div class="flex gap-2">
+    <%= form.submit class: "btn btn-primary flex-1" %>
+  </div>
+<% end %>
+

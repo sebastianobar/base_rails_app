@@ -1,14 +1,26 @@
 Rails.application.routes.draw do
-   admin_constraint = lambda do |request|
+  system_admin_constraint = lambda do |request|
+    return true if Rails.env.development?
     current_user = request.env["warden"].user
-    current_user.present? && current_user.has_role?(:admin)
+    current_user.present? && current_user.has_role?(:system_admin)
   end
 
-  constraints admin_constraint do
+  constraints system_admin_constraint do
     mount MissionControl::Jobs::Engine, at: "/jobs"
   end
 
-  devise_for :users
+  devise_for :users, controllers: { registrations: "users/registrations" }
+  devise_scope :user do
+    get "users/confirm_email_info", to: "users/registrations#confirm_email_info"
+  end
+
+  namespace :users do
+    resource :profile, only: %i[new edit create update] do
+      delete :destroy_avatar, on: :member
+    end
+  end
+  resolve("Users::Profile") { [ :users_profile ] }
+
   get "home/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
