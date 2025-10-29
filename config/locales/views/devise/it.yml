@@ -14,6 +14,8 @@ it:
         return_home: Torna alla home
       edit:
         subtitle: Cambia la tua email o password qui sotto.
+      new:
+        subtitle: Crea un account e unisciti a BaseRailsApp.
     passwords:
       new:
         subtitle: Inserisci la tua email e ti invieremo le istruzioni per reimpostare la tua password.
