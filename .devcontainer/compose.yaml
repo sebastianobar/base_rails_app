@@ -38,6 +38,14 @@ services:
         POSTGRES_USER: postgres
         POSTGRES_PASSWORD: postgres
 
+  redis:
+    image: redis:latest
+    restart: unless-stopped
+    networks:
+    - default
+    volumes:
+    - redis-data:/data
+
   mailcatcher:
     image: dockage/mailcatcher
 
@@ -45,3 +53,4 @@ services:
 
 volumes:
   postgres-data:
+  redis-data:

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   constraints system_admin_constraint do
     mount MissionControl::Jobs::Engine, at: "/jobs"
+    mount RailsPerformance::Engine, at: "/rails/performance"
   end
 
   devise_for :users, controllers: { registrations: "users/registrations" }
